@@ -4,14 +4,20 @@ function getComputerChoice() {
   let randomNumber = Math.floor(Math.random() * 3);
   
   if (randomNumber == 0) {
-    computerChoice = "rock"
+    computerChoice = "rock"; 
   }
   else if (randomNumber == 1) {
-    computerChoice = "paper"
+    computerChoice = "paper"; 
   }
   else {
-    computerChoice = "scissors"
+    computerChoice = "scissors"; 
   }
   
   return computerChoice; 
+}
+
+function getUserChoice() {
+  // get case-insensitive user input
+  let userChoice = prompt("Enter rock, paper, or scissors", "").toLowerCase();
+  return userChoice; 
 }
