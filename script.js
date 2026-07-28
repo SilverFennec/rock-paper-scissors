@@ -34,7 +34,18 @@ function playGame(rounds) {
   for (let i = 0; i < rounds; i++) {
   playRound(getUserChoice(), getComputerChoice());
   }
-  console.log("Human score = ", humanScore);
+  
+  let winner; 
+  if (humanScore > computerScore) {
+    winner = "human"; 
+  }
+  else if (humanScore < computerScore) {
+    winner = "computer"; 
+  }
+  else {
+    winner = "tie";
+  }
+  console.log("Winner = ", winner);
   
   // determine round-winner
   function playRound(humanChoice, computerChoice) {
