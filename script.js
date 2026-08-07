@@ -23,6 +23,9 @@ function getUserChoice() {
   return userChoice; 
 }
 
+const roundResult = document.querySelector('.roundResult')
+
+
 function playGame(rounds) {
   
   let humanScore = 0;
@@ -61,34 +64,34 @@ function playGame(rounds) {
   function playRound(humanChoice, computerChoice) {
   
     if (humanChoice == "rock" && computerChoice == "paper") {
-      console.log("You lose! Paper beats rock");
+      roundResult.textContent = "You lose! Paper beats rock";
       computerScore++;
     }
     else if (humanChoice == "rock" && computerChoice == "scissors") {
-      console.log("You win! Rock beats scissors");
+      roundResult.textContent = "You win! Rock beats scissors";
       humanScore++;
     }
   
     else if (humanChoice == "paper" && computerChoice == "scissors") {
-      console.log("You lose! Scissors beat paper");
+      roundResult.textContent = "You lose! Scissors beat paper";
       computerScore++;
     }
     else if (humanChoice == "paper" && computerChoice == "rock") {
-      console.log("You win! Paper beats rock");
+      roundResult.textContent = "You win! Paper beats rock";
       humanScore++;
     }
   
     else if (humanChoice == "scissors" && computerChoice == "rock") {
-      console.log("You lose! Rock beats scissors")
+      roundResult.textContent = "You lose! Rock beats scissors";
       computerScore++;
     }
     else if (humanChoice == "scissors" && computerChoice == "paper") {
-      console.log("You win! Scissors beat paper");
+      roundResult.textContent = "You win! Scissors beat paper";
       humanScore++;
     }
   
     else if (humanChoice == computerChoice) {
-      console.log("Tie");
+      roundResult.textContent = "Tie";
       humanScore++;
       computerScore++;
     }
