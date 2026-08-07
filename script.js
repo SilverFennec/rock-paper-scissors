@@ -23,17 +23,27 @@ function getUserChoice() {
   return userChoice; 
 }
 
-
-
 function playGame(rounds) {
   
   let humanScore = 0;
   let computerScore = 0;
+  let userChoice;
+  let userSelection = document.querySelector('#userSelection')
+  let runningScore = document.querySelector('#runningScore')
   
-  // play x number of rounds
-  for (let i = 0; i < rounds; i++) {
-  playRound(getUserChoice(), getComputerChoice());
+  userSelection.addEventListener('click', (event) => {
+  userChoice = event.target.textContent;
+  playRound(userChoice, getComputerChoice())
+  
+  runningScore.textContent = `human score = ${humanScore}, computer score = ${computerScore}`
   }
+)
+
+
+  // play x number of rounds
+  /* for (let i = 0; i < rounds; i++) {
+  playRound(getUserChoice(), getComputerChoice());
+  } */
   
   let winner; 
   if (humanScore > computerScore) {
@@ -43,9 +53,9 @@ function playGame(rounds) {
     winner = "computer"; 
   }
   else {
-    winner = "tie";
+    winner = "tie"
   }
-  console.log("Winner = ", winner);
+  console.log("Winner = ", winner)
   
   // determine round-winner
   function playRound(humanChoice, computerChoice) {
@@ -85,6 +95,7 @@ function playGame(rounds) {
   }
 }
 
-let rounds = +prompt("Enter the number of rounds you want to play: ", ''); 
+// let rounds = +prompt("Enter the number of rounds you want to play: ", ''); 
+let rounds = 1;
 
 playGame(rounds); 
