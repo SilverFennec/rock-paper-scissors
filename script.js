@@ -2,7 +2,6 @@ function getComputerChoice() {
   let computerChoice
   // output: 0, 1 or 2
   let randomNumber = Math.floor(Math.random() * 3);
-  
   if (randomNumber == 0) {
     computerChoice = "rock"; 
   }
@@ -12,7 +11,6 @@ function getComputerChoice() {
   else {
     computerChoice = "scissors"; 
   }
-  
   return computerChoice; 
 }
 
@@ -23,22 +21,31 @@ function getUserChoice() {
   return userChoice; 
 }
 
-const roundResult = document.querySelector('.roundResult')
+const roundLog = document.querySelector('.roundLog'); 
 
+let userSelection = document.querySelector('#userSelection');
+let runningScore = document.querySelector('#runningScore');
+
+let roundResult; 
+
+let currentRound = 0;
+let rounds = 5;
 
 function playGame(rounds) {
   
   let humanScore = 0;
   let computerScore = 0;
   let userChoice;
-  let userSelection = document.querySelector('#userSelection')
-  let runningScore = document.querySelector('#runningScore')
   
   userSelection.addEventListener('click', (event) => {
   userChoice = event.target.textContent;
   playRound(userChoice, getComputerChoice())
   
-  runningScore.textContent = `human score = ${humanScore}, computer score = ${computerScore}`
+  runningScore.textContent = `human score: ${humanScore}, computer score: ${computerScore}`
+  
+  currentRound++;
+  
+  roundLog.textContent += `Round ${currentRound}: ${roundResult}\n`
   }
 )
 
@@ -64,41 +71,40 @@ function playGame(rounds) {
   function playRound(humanChoice, computerChoice) {
   
     if (humanChoice == "rock" && computerChoice == "paper") {
-      roundResult.textContent = "You lose! Paper beats rock";
+      roundResult = "You lose! Paper beats rock";
       computerScore++;
     }
     else if (humanChoice == "rock" && computerChoice == "scissors") {
-      roundResult.textContent = "You win! Rock beats scissors";
+      roundResult = "You win! Rock beats scissors";
       humanScore++;
     }
   
     else if (humanChoice == "paper" && computerChoice == "scissors") {
-      roundResult.textContent = "You lose! Scissors beat paper";
+      roundResult = "You lose! Scissors beat paper";
       computerScore++;
     }
     else if (humanChoice == "paper" && computerChoice == "rock") {
-      roundResult.textContent = "You win! Paper beats rock";
+      roundResult = "You win! Paper beats rock";
       humanScore++;
     }
   
     else if (humanChoice == "scissors" && computerChoice == "rock") {
-      roundResult.textContent = "You lose! Rock beats scissors";
+      roundResult = "You lose! Rock beats scissors";
       computerScore++;
     }
     else if (humanChoice == "scissors" && computerChoice == "paper") {
-      roundResult.textContent = "You win! Scissors beat paper";
+      roundResult = "You win! Scissors beat paper";
       humanScore++;
     }
   
     else if (humanChoice == computerChoice) {
-      roundResult.textContent = "Tie";
+      roundResult = "Tie";
       humanScore++;
       computerScore++;
     }
   }
 }
 
-// let rounds = +prompt("Enter the number of rounds you want to play: ", ''); 
-let rounds = 1;
+// let rounds = +prompt("Enter the number of rounds you want to play: ", '');
 
 playGame(rounds); 
