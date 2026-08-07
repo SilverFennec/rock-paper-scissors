@@ -21,10 +21,10 @@ function getUserChoice() {
   return userChoice; 
 }
 
-const roundLog = document.querySelector('.roundLog'); 
-
 let userSelection = document.querySelector('#userSelection');
-let runningScore = document.querySelector('#runningScore');
+let runningScore = document.querySelector('.runningScore');
+let roundLog = document.querySelector('.roundLog'); 
+let gameWinner = document.querySelector('.gameWinner')
 
 let roundResult; 
 
@@ -46,6 +46,21 @@ function playGame(rounds) {
   currentRound++;
   
   roundLog.textContent += `Round ${currentRound}: ${roundResult}\n`
+  
+  if (currentRound === rounds) {
+    userSelection.textContent = ''; 
+    
+    if (humanScore > computerScore) {
+      gameWinner.textContent = 'You won!'
+    }
+    else if (humanScore < computerScore) {
+      gameWinner.textContent = 'You lost!'
+    }
+    else {
+      gameWinner.textContent = 'You tied!'
+    }
+  }
+  
   }
 )
 
