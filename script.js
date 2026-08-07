@@ -14,13 +14,6 @@ function getComputerChoice() {
   return computerChoice; 
 }
 
-function getUserChoice() {
-  // get case-insensitive user input
-  let userChoice = prompt("Enter rock, paper, or scissors", "").toLowerCase();
-  
-  return userChoice; 
-}
-
 let userSelection = document.querySelector('#userSelection');
 let runningScore = document.querySelector('.runningScore');
 let roundLog = document.querySelector('.roundLog'); 
@@ -29,7 +22,6 @@ let gameWinner = document.querySelector('.gameWinner')
 let roundResult; 
 
 let currentRound = 0;
-let rounds = 5;
 
 function playGame(rounds) {
   
@@ -63,24 +55,6 @@ function playGame(rounds) {
   
   }
 )
-
-
-  // play x number of rounds
-  /* for (let i = 0; i < rounds; i++) {
-  playRound(getUserChoice(), getComputerChoice());
-  } */
-  
-  let winner; 
-  if (humanScore > computerScore) {
-    winner = "human"; 
-  }
-  else if (humanScore < computerScore) {
-    winner = "computer"; 
-  }
-  else {
-    winner = "tie"
-  }
-  console.log("Winner = ", winner)
   
   // determine round-winner
   function playRound(humanChoice, computerChoice) {
@@ -120,6 +94,4 @@ function playGame(rounds) {
   }
 }
 
-// let rounds = +prompt("Enter the number of rounds you want to play: ", '');
-
-playGame(rounds); 
+playGame(5); 
