@@ -33,7 +33,7 @@ function playGame(rounds) {
   userChoice = event.target.textContent;
   playRound(userChoice, getComputerChoice())
   
-  runningScore.textContent = `human score: ${humanScore}, computer score: ${computerScore}`
+  runningScore.textContent = `Your score: ${humanScore}, computer score: ${computerScore}`
   
   currentRound++;
   
